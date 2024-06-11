@@ -15,8 +15,9 @@ FORMAT = 'utf-8'
 PORT = 5050
 close = "!Disconnect"
 SERVER = socket.gethostbyname(socket.gethostname())
-print(f"current Server:{socket.gethostname()}")
-print(f"IP Address:{SERVER}")
+
+print(f"current Server {socket.gethostname()} Running")
+print(f"IP Address {SERVER} Running")
 
 
 ADDR = (SERVER,PORT)
@@ -27,7 +28,10 @@ server = socket.socket(socket.AF_INET, SOCK_STREAM)
 server.bind(ADDR)
     #binding the created socket to the ADDR, which is to the ip address and port of the server
 
-def handle_client():
+def handle_client(conn,addr):
+
+    print(f"NEW client {addr} connected")
+    
     connection = True
     while connection:
         msg_length = conn.recv(HEADER).decode(FORMAT)
