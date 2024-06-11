@@ -8,7 +8,7 @@ Socket Programming Fundamentals: Gain a solid understanding of sockets, the corn
 Client-Server Connection Establishment: Master the art of creating reliable connections between clients and servers, enabling data exchange and seamless communication.
 
 
-##Clone the Repository:
+## Clone the Repository:
 
 git clone https://YohaTek/PyNetworking.git
 
