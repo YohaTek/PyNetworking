@@ -13,16 +13,16 @@ import threading
 HEADER = 64
 FORMAT = 'utf-8'
 PORT = 5050
-close = "!Disconnect"
+close = "Disconnect"
 SERVER = socket.gethostbyname(socket.gethostname())
-
-print(f"current Server {socket.gethostname()} Running")
+hostname = socket.gethostname()
+print(f'current server {hostname} running')
 print(f"IP Address {SERVER} Running")
 
 
 ADDR = (SERVER,PORT)
 
-server = socket.socket(socket.AF_INET, SOCK_STREAM) 
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
     #creation of new socket ,
 
 server.bind(ADDR)
@@ -35,24 +35,26 @@ def handle_client(conn,addr):
     connection = True
     while connection:
         msg_length = conn.recv(HEADER).decode(FORMAT)
-        msg_length =int(msg_length)
-        msg = conn.recv(msg_length).decode(FORMAT)
-        if msg == close:
-            print(f"the message is: {msg}")
-            connection = False
-        else
-            print(f"the message is: {msg}")
-
-    server.close()
+        if msg_length:
+            msg_length =int(msg_length)
+            msg = conn.recv(msg_length).decode(FORMAT)
+            if msg == close:
+                print(f"the message is: {msg}")
+                connection = False
+            print(f"[{addr}] {msg}")
+    conn.close()
         
 def start():
+    server.listen()
+    print(f"Listening {SERVER}")
     while True:
         conn,addr = server.accept();
-        thread = threading.Thread(target = handle_client, args(conn,addr))
+        thread = threading.Thread(target = handle_client, args=(conn,addr))
         thread.start()
         print(threading.activeCount()-1)
 
-        
+print('Starting: Server is starting ...')
+start()        
 
         
 
