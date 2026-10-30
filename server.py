@@ -51,23 +51,12 @@ def start():
         conn,addr = server.accept();
         thread = threading.Thread(target = handle_client, args=(conn,addr))
         thread.start()
-        print(threading.activeCount()-1)
+        print(threading.active_count() - 1)
 
-print('Starting: Server is starting ...')
-start()        
-
-        
-
+def main():
+    print('Starting: Server is starting ...')
+    start()
 
 
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == "__main__":
+    main()
