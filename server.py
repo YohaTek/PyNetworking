@@ -53,21 +53,10 @@ def start():
         thread.start()
         print(threading.active_count() - 1)
 
-print('Starting: Server is starting ...')
-start()        
-
-        
-
+def main():
+    print('Starting: Server is starting ...')
+    start()
 
 
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == "__main__":
+    main()
